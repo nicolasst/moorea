@@ -40,3 +40,7 @@ On top of that it provides also:
 - Benchmarking primitives
 
 
+# installation
+
+requires installation of:
+- apache commons lang: http://commons.apache.org/proper/commons-lang/
