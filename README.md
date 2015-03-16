@@ -1,7 +1,7 @@
 # moorea
 
 Moorea is a flexible, simple and powerfull **graph** and mathematical **library** in Java.
-It aims at making your life easier by making your code more **readable** and **reusable**.
+It aims at making life easier by making code more **readable** and **reusable**.
 
 The two killer features of the library are:
 - Simple to use, understand, extend and distribute graph **design**
@@ -34,9 +34,9 @@ On top of that it provides also:
 - random number generation helpers
 
 **on the misc side**
-- **Tupples** because it makes life so much easier
+- **Tupples** because they makes life sensibly easier
 - Bidirectionnal maps
-- Easy logging primitives
+- Logging primitives (super easy file logging)
 - Benchmarking primitives
 
 
