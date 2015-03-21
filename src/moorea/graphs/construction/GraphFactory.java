@@ -759,7 +759,7 @@ public class GraphFactory<G extends Graph, V extends Node> {
 			return generateCompleteBipartiteGraph(m,n);
 		}
 		// hypercube
-		if(gType.equals("hyperc")) {
+		if(gType.equals("hypercube")) {
 			int nbNodes = sc.nextInt();
 			return generateHyperCube(nbNodes);
 		}
