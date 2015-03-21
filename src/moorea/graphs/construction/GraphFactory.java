@@ -426,18 +426,18 @@ public class GraphFactory<G extends Graph, V extends Node> {
 
 	// par defaut: center = nodes.get(0)
 	
-	public static Graph genHierarchicalGraph(int nBase, int level) {
-		Graph g = genHierarchicalGraph(nBase, nBase-1, level, true, null);
+	public G genHierarchicalGraph(int nBase, int level) {
+		G g = genHierarchicalGraph(nBase, nBase-1, level, true, null);
 		return g;
 	}
 	
-	public static Graph genHierarchicalGraph(int nBase, int nbChilds, int level) {
-		Graph g = genHierarchicalGraph(nBase, nbChilds, level, true, null);
+	public G genHierarchicalGraph(int nBase, int nbChilds, int level) {
+		G g = genHierarchicalGraph(nBase, nbChilds, level, true, null);
 		return g;
 	}
 	
-	public static Graph genHierarchicalGraph(int nBase, int nbChilds, int level, boolean linkCenters,  List<Node> extNodes) {
-		Graph g = generateCompleteSimpleGraph(nBase);
+	public G genHierarchicalGraph(int nBase, int nbChilds, int level, boolean linkCenters,  List<Node> extNodes) {
+		G g = generateCompleteGraph(nBase);
 		Node center = g.getNodeByIndex(0);
 		// recursion terminal case
 		if(level==0) {
@@ -689,6 +689,16 @@ public class GraphFactory<G extends Graph, V extends Node> {
 			double beta = sc.nextDouble();
 			return generateRandomGraphWattsStrogatz(nbNodes, meanDegree, beta);
 		} 
+		// empty
+		if(gType.equals("empty")) {
+			return generateEmptyGraph();
+		}
+		// hierarchicl
+		if(gType.equals("hierarchical")) {
+			int nBase = sc.nextInt();
+			int nbLevels = sc.nextInt();
+			return genHierarchicalGraph(nBase, nbLevels);
+		}
 		// grid graph
 		if(gType.equals("grid")) {
 			int width = sc.nextInt();
@@ -730,7 +740,13 @@ public class GraphFactory<G extends Graph, V extends Node> {
 			int nbChilds = sc.nextInt();
 			return generateUndirectedTreeGraph(nbChilds,depth);
 		}
-		
+		// directed perfect tree
+		if(gType.equals("treedir")) {
+			int depth = sc.nextInt();
+			int nbChilds = sc.nextInt();
+			boolean directionRootToChild = sc.nextBoolean();
+			return generateDirectedTreeGraph(nbChilds, depth, directionRootToChild);
+		}
 		// complete graph
 		if(gType.equals("kn")) {
 			int nbNodes = sc.nextInt();
