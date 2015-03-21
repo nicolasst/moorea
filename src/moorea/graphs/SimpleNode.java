@@ -1,5 +1,6 @@
 package moorea.graphs;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class SimpleNode<K extends Node> extends Node<K> {
 
-	List<K> neighbours = new LinkedList();
+	List<K> neighbours = new ArrayList<>();
 	
 	public SimpleNode(Integer id) {
 		this.id = id;
