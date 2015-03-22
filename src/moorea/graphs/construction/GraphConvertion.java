@@ -1,5 +1,6 @@
 package moorea.graphs.construction;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import moorea.graphs.EdgeGraph;
@@ -27,7 +28,8 @@ import moorea.misc.BidiMap;
 public class GraphConvertion {
 	
 	/**
-	 * Converts a Graph to a WeightedGraph 
+	 * Converts a Graph to a WeightedGraph.
+	 * Default edge weight is integer 1. 
 	 * @param g
 	 * @return
 	 */
@@ -95,6 +97,31 @@ public class GraphConvertion {
 		}
 
 		return eg;
+	}
+
+	public static <N> N[][] adjacencyMatrixFromGraph(Graph<Node> g, Class<N> cn, N zero, N one, N diagonalElement) {
+		int size = g.getNodes().size();
+		//System.out.println(g.getNodes()+" "+size);
+		N[][] matrix = (N[][]) Array.newInstance(cn, new int[]{size, size});
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				matrix[i][j] = zero;
+			}
+		}
+		for(Node n : (List<Node>) g.getNodes()) {
+			matrix[n.id][n.id] = diagonalElement;
+			/*if(!(n instanceof DirectedNode)) {
+				for(Node nb : (List<Node>) ((DirectedNode)n).getOutgoingArcs()) {
+					matrix[n.id][nb.id] = one;
+				}
+			} else {*/
+				for(Node nb : (List<Node>) n.getNeighbours()) {
+					matrix[n.id][nb.id] = one;
+					matrix[nb.id][n.id] = one;
+				}
+			}
+		//}
+		return matrix;
 	}	
 
 }

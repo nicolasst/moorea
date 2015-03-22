@@ -1,10 +1,9 @@
 package moorea.maths.objects;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -31,7 +30,7 @@ public class ScopeFactory<V extends Variable> {
 	
 	public ScopeFactory(Class<V> cv) {
 		variableClass = cv;
-		variables = new LinkedList<>();
+		variables = new ArrayList<>();
 	}
 	
 	public void configureRandomness(Random r) {
@@ -53,7 +52,7 @@ public class ScopeFactory<V extends Variable> {
 	}
 
 	public List<V> createVariables(int nb) {
-		List<V> l = new LinkedList<>();
+		List<V> l = new ArrayList<>();
 		for (int i = 0; i < nb; i++) {
 			V v = createVariable();
 			l.add(v);
@@ -79,7 +78,7 @@ public class ScopeFactory<V extends Variable> {
 	}
 	
 	public List<V> createDiscreteVariables(int nbVars, int cardinality) {
-		List<V> l = new LinkedList<>();
+		List<V> l = new ArrayList<>();
 		for (int i = 0; i < nbVars; i++) {
 			V v = createDiscreteVariable(cardinality);
 			l.add(v);
@@ -88,7 +87,7 @@ public class ScopeFactory<V extends Variable> {
 	}
 	
 	public List<V> createDiscreteVariables(int ... cardinality) {
-		List<V> l = new LinkedList<>();
+		List<V> l = new ArrayList<>();
 		for (int i = 0; i < cardinality.length; i++) {
 			V v = createDiscreteVariable(cardinality[i]);
 			l.add(v);
@@ -105,7 +104,7 @@ public class ScopeFactory<V extends Variable> {
 	}
 	
 	public List<V> sampleScopeIndexList(List<Integer> indices) {
-		List<V> l = new LinkedList<V>();
+		List<V> l = new ArrayList<V>();
 		for(Integer idx : indices) {
 			l.add(variables.get(idx));
 		}
@@ -119,7 +118,7 @@ public class ScopeFactory<V extends Variable> {
 				allVars.add(v);
 			}
 		}
-		return new LinkedList(Arrays.asList(allVars.toArray()));
+		return new ArrayList(Arrays.asList(allVars.toArray()));
 	}
 	
 	public static void unitTest() {

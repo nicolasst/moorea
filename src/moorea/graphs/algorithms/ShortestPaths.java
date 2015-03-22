@@ -12,6 +12,7 @@ import java.util.Set;
 
 import moorea.graphs.Graph;
 import moorea.graphs.Node;
+import moorea.graphs.construction.GraphConvertion;
 import moorea.graphs.weighted.WeightedGraph;
 import moorea.graphs.weighted.WeightedNode;
 import moorea.maths.algebra.MinOperator;
@@ -19,7 +20,6 @@ import moorea.maths.algebra.Operator;
 import moorea.maths.algebra.Semiring;
 import moorea.maths.algebra.SetComparator;
 import moorea.maths.algebra.SumOperator;
-import moorea.maths.matrix.MatrixFactory;
 import moorea.misc.AdHocMapEvalComparator;
 import moorea.misc.Tupple2;
 
@@ -53,7 +53,7 @@ public class ShortestPaths {
 		if(sr.getSetClass() == Double.class) {
 			initValue = (N) (Double) 1.;
 		}
-		N[][] matrix = MatrixFactory.adjacencyMatrixFromGraph(g, sr.getSetClass(), sr.getDotNeutralElement(), initValue, sr.getSumNeutralElement()); // TODO weighted graph should be treated differntly
+		N[][] matrix = GraphConvertion.adjacencyMatrixFromGraph(g, sr.getSetClass(), sr.getDotNeutralElement(), initValue, sr.getSumNeutralElement()); // TODO weighted graph should be treated differntly
 		return getAllSPFloydWrashall(matrix, sr);
 	}		
 	

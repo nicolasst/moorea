@@ -18,7 +18,6 @@ import moorea.maths.algebra.MinOperator;
 import moorea.maths.algebra.Semiring;
 import moorea.maths.algebra.SumOperator;
 import moorea.maths.matrix.MatrixAlgorithms;
-import moorea.maths.matrix.MatrixFactory;
 
 /**
  * Unit test for shortet paths.
@@ -51,7 +50,7 @@ public class TestShorestPaths {
 
 		System.out.println("adjacencyMatrixFromGraph");
 		
-		Integer[][] gMatrix = MatrixFactory.adjacencyMatrixFromGraph((Graph)g, sr.getSetClass(), sr.getDotNeutralElement(), 1, sr.getSumNeutralElement());
+		Integer[][] gMatrix = GraphConvertion.adjacencyMatrixFromGraph((Graph)g, sr.getSetClass(), sr.getDotNeutralElement(), 1, sr.getSumNeutralElement());
 		
 		MatrixAlgorithms.displayHideValue(gMatrix,sr.getDotNeutralElement());
 		

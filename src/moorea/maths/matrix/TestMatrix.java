@@ -22,11 +22,11 @@ public class TestMatrix {
 		
 		Iterator<Integer> it = new UniformRandomIntegerGenerator(r, 0, 10);
 		
-		Matrix<Integer> m = MatrixFactory.generateRandomMatrix(Integer.class, 5, it);
+		Matrix<Integer> m = MatrixFactory.createAndFillMatrix(Integer.class, 5, it);
 		
 		MatrixAlgorithms.display(m);
 		
-		m = MatrixFactory.generateRandomSymetricMatrix(Integer.class, 5, it);
+		m = MatrixFactory.createAndFillSymetricMatrix(Integer.class, 5, it);
 		
 		MatrixAlgorithms.display(m);
 		
