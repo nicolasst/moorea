@@ -86,14 +86,18 @@ public class ProbabilityDistribution {
 	// of course it would be better to use binary search, but for this project we don't really care
 	
 	public static int drawObjectIndexFromDistribution(List<Double> objectProbs, double p) {
-		double sum = 0.;
-		int index = -1;
-		for (int i = 0; i < objectProbs.size()-1; i++) {
-			if(sum < p && p <= sum + objectProbs.get(i+1)) {
-				index = i;
+		double sum = objectProbs.get(0);
+		int index = 0;
+		for (int i = 1; i < objectProbs.size(); i++) {
+			if(sum>p) {
 				break;
 			}
-			sum += objectProbs.get(i+1);
+			index = i;
+//			if(p <sum && p <= sum + objectProbs.get(i+1)) {
+//				index = i;
+//				break;
+//			}
+			sum += objectProbs.get(i);
 		}
 		if(index == -1) {
 			index = objectProbs.size()-1;

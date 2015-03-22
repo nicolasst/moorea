@@ -65,7 +65,7 @@ public class BidiMap<K,V> {
 	}
 	
 	public BidiMap<K,V> clone() {
-		return new BidiMap(this);
+		return new BidiMap<>(this);
 	}
 	
 	// G<K1>   ->   G<K2>   ->   G<K3>

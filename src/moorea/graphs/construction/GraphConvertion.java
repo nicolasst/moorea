@@ -44,7 +44,7 @@ public class GraphConvertion {
 		
 	public static <N> WeightedGraph<N> weightedGraphFromGraph(Graph<? extends Node> g, ParametrizedRandomGenerator<N> prg) {
 		WeightedGraph<N> wg = new WeightedGraph();
-		BidiMap<Node, WeightedNode<N>> oldToNew = new BidiMap();
+		BidiMap<Node, WeightedNode<N>> oldToNew = new BidiMap<>();
 		for(Node n : g.getNodes()) {
 			WeightedNode<N> nn = wg.createNewNode();
 			wg.addExistingNode(nn);

@@ -1,17 +1,13 @@
 package moorea.maths.hypermatrix;
 
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import moorea.maths.objects.Assignment;
 import moorea.maths.objects.DiscreteVariable;
 import moorea.maths.random.ParametrizedRandomGenerator;
-import moorea.maths.random.UniformRandomBooleanGenerator;
-import moorea.maths.random.UniformRandomDoubleGenerator;
 import moorea.maths.random.UniformRandomIntegerGenerator;
 
 /**

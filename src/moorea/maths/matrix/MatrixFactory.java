@@ -12,14 +12,19 @@ import java.util.Iterator;
 
 public class MatrixFactory {
 	
-	public static <N> Matrix<N> createAndFillMatrix(Class<N> cl, int size, Iterator<N> it) {
-	
-		Matrix<N> m = new Matrix<N>(cl, size);
-		for(int i=0;i<size;i++) {
-			for(int j=0;j<size;j++) {
+	public static <N> Matrix<N> fillMatrix(Matrix m, Iterator<N> it) {
+		for(int i=0;i<m.height;i++) {
+			for(int j=0;j<m.width;j++) {
 				m.values[i][j] = it.next();
 			}
 		}
+		return m;
+	}
+	
+	public static <N> Matrix<N> createAndFillMatrix(Class<N> cl, int size, Iterator<N> it) {
+	
+		Matrix<N> m = new Matrix<N>(cl, size);
+		fillMatrix(m, it);
 		return m;
 	}
 
