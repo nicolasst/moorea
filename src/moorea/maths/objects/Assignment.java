@@ -62,10 +62,10 @@ public class Assignment<V extends Variable, N> extends HashMap<V,N> {
 
 	/** reduce an assignment to certain variables only, Assignment representation */
 	
-	public static Assignment truncateAssignementToScope(Assignment<? extends Variable,?> a, List<? extends Variable> scope) {
-		Assignment aa = new Assignment();
+	public static <V extends Variable, N> Assignment<V,N> truncateAssignementToScope(Assignment<V, N> a, List<V> scope) {
+		Assignment<V,N> aa = new Assignment<>();
 		aa.putAll(a);
-		for(Variable v : a.keySet()) {
+		for(V v : a.keySet()) {
 			if(!scope.contains(v)) {
 				aa.remove(v);
 			}

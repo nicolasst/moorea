@@ -45,24 +45,24 @@ public class HyperMatrixFactory<V extends DiscreteVariable, K> {
 	
 	//
 	
-	public HyperMatrix<V, K> generateRandomHyperMatrix(List<V> scope) {
-		HyperMatrix<V, K> hm = new HyperMatrix<>(scope, elementClass);
+	public HyperMatrix<DiscreteVariable, K> generateRandomHyperMatrix(List<DiscreteVariable> scope) {
+		HyperMatrix<DiscreteVariable, K> hm = new HyperMatrix<>(scope, elementClass);
 		DiscreteVariableScopeAssignementIterator ai = new DiscreteVariableScopeAssignementIterator((List<DiscreteVariable>)scope);
 		while(ai.hasNext()) {
-			Assignment a = ai.next();
+			Assignment<DiscreteVariable, Integer> a = ai.next();
 			K value = prng.generateNext();
 			hm.values.put(Assignment.assignementToStringCode(a), value);
 		}
 		return hm;
 	}
 	
-	public List<HyperMatrix<V, K>> generateRandomHyperMatrixListFromScopeList(List<List<V>> l) {
+	public List<HyperMatrix<DiscreteVariable, K>> generateRandomHyperMatrixListFromScopeList(List<List<DiscreteVariable>> l) {
 		
-		LinkedList<HyperMatrix<V, K>> subFunctions = new LinkedList<>();
+		LinkedList<HyperMatrix<DiscreteVariable, K>> subFunctions = new LinkedList<>();
 		
 		// generate random hm subfunctions
-		for(List<V> lv : l) {
-			HyperMatrix<V, K> hm = generateRandomHyperMatrix(lv);
+		for(List<DiscreteVariable> lv : l) {
+			HyperMatrix<DiscreteVariable, K> hm = generateRandomHyperMatrix(lv);
 			subFunctions.add(hm);
 
 			System.out.println("new hm:");
@@ -83,7 +83,7 @@ public class HyperMatrixFactory<V extends DiscreteVariable, K> {
 		HyperMatrixFactory<DiscreteVariable, Integer> hmf = new HyperMatrixFactory<>(Integer.class);
 		hmf.setPRNG(new UniformRandomIntegerGenerator(new Random(), 0, 100));
 		
-		HyperMatrix<?, Integer> hm = hmf.generateRandomHyperMatrix(scope);
+		HyperMatrix<DiscreteVariable, Integer> hm = hmf.generateRandomHyperMatrix(scope);
 		
 		HyperMatrixAlgorithms.disp(hm);
 	}

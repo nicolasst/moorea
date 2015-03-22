@@ -27,11 +27,11 @@ public class HyperMatrixAlgorithms {
 	 * @param hm
 	 */
 	
-	public static void disp(HyperMatrix hm) {
+	public static <K> void disp(HyperMatrix<DiscreteVariable, K> hm) {
 		System.out.println(hm);
 		DiscreteVariableScopeAssignementIterator it = new DiscreteVariableScopeAssignementIterator(hm.getScope());
 		while(it.hasNext()) {
-			Assignment a = it.next();
+			Assignment<DiscreteVariable, Integer> a = it.next();
 			String as = Assignment.assignementToStringCode(a);
 			System.out.println(as+"="+hm.getValue(a));
 		}
@@ -140,7 +140,7 @@ public class HyperMatrixAlgorithms {
 			K val = null;
 			reducer.reInitialiseValue();
 			for(HyperMatrix<DiscreteVariable,K> hm : lhm) {
-				Assignment<DiscreteVariable, K> aReduced = Assignment.truncateAssignementToScope(a, hm.getScope());
+				Assignment<DiscreteVariable, Integer> aReduced = Assignment.truncateAssignementToScope(a, hm.getScope());
 				String sar = Assignment.assignementToStringCode(aReduced);
 				val = reducer.apply(hm.getValue(sar));
 			}
