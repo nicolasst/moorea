@@ -25,21 +25,23 @@ import java.util.Map;
 
 public class Assignment<V extends Variable, N> extends HashMap<V,N> {
 	
-	/** builds an assignement from a strign representation */
+	/** builds an assignement from a string representation */
 	
-	public static Assignment stringCodeToAssignement(String a, List<Variable> lv) {
-		Assignment aa = new Assignment();
+	public static <V extends Variable, N> Assignment<V, N> stringCodeToAssignement(String a, List<V> lv) {
+		Assignment<V, N> aa = new Assignment<>();
 		String[] allAssignements = a.split(";");
-		Map<Integer,Variable> mapIdToVariable = new HashMap<Integer, Variable>();
-		for(Variable v : lv) {
+		Map<Integer,V> mapIdToVariable = new HashMap<>();
+		for(V v : lv) {
 			mapIdToVariable.put(v.id, v);
 		}
 		for(int i=0;i<allAssignements.length;i++) {
 			String[] singleAssignement = allAssignements[i].split(":");
 			int varId = Integer.parseInt(singleAssignement[0]);
-			//int varId = Integer.parseInt(singleAssignement[0].substring(1));
-			int val = Integer.parseInt(singleAssignement[1]);
-			Variable v = mapIdToVariable.get(varId);
+			V v = mapIdToVariable.get(varId);
+			N val = null;
+			if(v instanceof DiscreteVariable) {
+				val = (N) (Object) Integer.parseInt(singleAssignement[1]);
+			}
 			aa.put(v,val);
 		}
 		return aa;

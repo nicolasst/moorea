@@ -15,11 +15,9 @@ import moorea.graphs.Node;
 import moorea.graphs.construction.GraphConvertion;
 import moorea.graphs.weighted.WeightedGraph;
 import moorea.graphs.weighted.WeightedNode;
-import moorea.maths.algebra.MinOperator;
 import moorea.maths.algebra.Operator;
 import moorea.maths.algebra.Semiring;
 import moorea.maths.algebra.SetComparator;
-import moorea.maths.algebra.SumOperator;
 import moorea.misc.AdHocMapEvalComparator;
 import moorea.misc.Tupple2;
 
